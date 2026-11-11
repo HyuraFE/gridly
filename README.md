@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gridly
 
-## Getting Started
+Platform link-in-bio modular multi-user SaaS bergaya bento grid dengan tema visual **Neobrutalism**, dibangun menggunakan Next.js App Router, Tailwind CSS, dan Supabase.
 
-First, run the development server:
+## Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Bento Grid Modular:** Susunan kartu fleksibel (1x1, 2x1, atau 2x2 span) yang responsif dan interaktif.
+- **Dukungan Multi-Card:** Tautan website, repositori GitHub, badge Discord, Spotify track, dan teks/bio kustom.
+- **Desain Neobrutalism:** Border tegas, hard shadow tanpa blur, palet warna pastel kontras tinggi.
+- **Multi-User SaaS:** Isolasi data antar-pengguna dengan **Row Level Security (RLS)** PostgreSQL.
+- **Profil Publik Dinamis:** Halaman profil kustom berbasis username (`/[username]`).
+- **Dashboard Editor:** Tambah kartu, atur grid layout, edit profil, dan upload/preview avatar instan.
+- **Keamanan Berlapis:** Sanitasi skema URI (mencegah XSS/malicious protocol injection) dan HTTP Security Headers (X-Frame-Options DENY, nosniff, strict-origin).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** Next.js (App Router, React 19, TypeScript)
+- **Styling:** Tailwind CSS (v4) + Lucide React Icons
+- **Database & Auth:** Supabase (PostgreSQL, Supabase Auth, Row Level Security)
+- **Deployment:** Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup Lokal
 
-## Learn More
+1. Clone repositori:
+   ```bash
+   git clone https://github.com/HyuraFE/gridly.git
+   cd gridly
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Pasang dependensi:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Konfigurasi Environment Variable (`.env.local`):
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Jalankan migrasi SQL dari file `supabase/schema.sql` di Supabase SQL Editor.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Jalankan server lokal:
+   ```bash
+   npm run dev
+   ```
